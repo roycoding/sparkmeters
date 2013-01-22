@@ -1,70 +1,94 @@
 
             //----------------
             // Todo:
-            // Rewrite as purely numerical based meter level. I.e. each item has an associated value (e.g. 0.75) and the meter is filled by that much.
+            // * Allow group data to be placed in html document
+            // * Parameter passing from html tags (or sandwiched between tags)
             //-----------------------
 
             //Width and height, meter fill and background
             var w = 7;
             var h = w*5;
-            var mfill = "silver";
+            var mfill = "yellowgreen"; //"silver";
             var mback = "whitesmoke";
+            var most = 1.0
+            var mid = 0.5
+            var low = 0.25
 
             //Data
-            //var dataset = [];
+//            var dataset = [1,2,3,2,1];
+            var dataset = [
+                    {key: "Python", level : most},
+                    {key: "D3" , level : low},
+                    {key: "Linux" , level : most},
+                    {key: "C++" , level : mid},
+                    {key: "R" , level : low},
+                    {key: "Inkscape" , level : mid},
+                    {key: "matplotlib" , level : most},
+                    {key: "pandas" , level : low},
+                    {key: "bash" , level : mid},
+                    {key: "HTML" , level : mid},
+                    {key: "CSS" , level : mid},
+                    {key: "LaTeX" , level : most},
+                    {key: "JSON" , level : low},
+                    {key: "numpy" , level : most},
+                    {key: "scipy" , level : mid},
+                    {key: "SQL" , level : low}
+                    ];
 
-            // Full sparkmeters
-            var sparkmost = d3.selectAll(".sparkmost")
+            // Functions to handle grouped item data
+            function keyf(d) { return d.key; }
+            function levelf(d) { return d.level; }
+
+            // Group of items with sparkmeters
+            var sparkgroup = d3.select(".sparkmetergroup")
+                .selectAll("span")
+                .data(dataset)
+                .enter()
+                .append("span")
+                .attr("class","sparkgroup");
+
+            // Enter item text and create SVG containers
+            var sparkspans = d3.selectAll(".sparkgroup")
+                .data(dataset)
+                .text(function(d,i) {if (i==0) {return d.key+" ";} else {return ", "+d.key+" ";} })
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h);
 
-            // Draw SVG bars
-            sparkmost.append("rect")
-                .attr("x", 0)
-                .attr("y", 0)
-                .attr("height", h)
-                .attr("width", w)
-                .attr("fill", mfill);
-
-            //-----------------
-            // Half sparkmeters
-            var sparkmid = d3.selectAll(".sparkmid")
-                .append("svg")
-                .attr("width", w)
-                .attr("height", h);
-
-            // Draw half filled
-            sparkmid.append("rect")
+            // Draw meters filled to fill parameter
+            sparkspans.append("rect")
                 .attr("x", 0)
                 .attr("y", 0)
                 .attr("height", h)
                 .attr("width", w)
                 .attr("fill", mback);
 
-            sparkmid.append("rect")
+            sparkspans.append("rect")
                 .attr("x", 0)
-                .attr("y", h-h/2)
-                .attr("height", h/2)
+                .attr("y", function(d) { return h - h*d.level; })
+                .attr("height", function(d) { return h*d.level; })
                 .attr("width", w)
                 .attr("fill", mfill);
 
-            //--------------------
-            // Quarter sparkmeters
-            var sparklow = d3.selectAll(".sparklow")
+//            sparkspans.append("text")
+//            .text(",");
+
+            //-----------------------------------------
+            // Single sparkmeters
+            var sparksingle = d3.selectAll(".sparkmeter")
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h);
 
             // Draw quarter filled
-            sparklow.append("rect")
+            sparksingle.append("rect")
                 .attr("x", 0)
                 .attr("y", 0)
                 .attr("height", h)
                 .attr("width", w)
                 .attr("fill", mback);
 
-            sparklow.append("rect")
+            sparksingle.append("rect")
                 .attr("x", 0)
                 .attr("y", h-h/4)
                 .attr("height", h/4)
