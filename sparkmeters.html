@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sparkmeters with D3 demo</title>
+<!--        <script type="text/javascript" src="../d3/d3.v3.js"></script>-->
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <style type="text/css">
+                body {
+                    //text-align: center; 
+                    color: #555555; 
+                    background-color: white;
+                    font-family: arial, helvetica, sans-serif;
+                    font-size: 30px;
+                    }
+
+                a:link  {color: darkgray; text-decoration: none}
+                a:visited {color: darkgray; text-decoration: none}
+                a:hover {color: silver; text-decoration: underline}
+
+        </style>
+    </head>
+    <body>
+
+        <p><span class="sparklow"></span> <span class="sparkmost"></span> <span class="sparkmid"></span> <span class="sparkmost"></span> <span class="sparkmid"></span> <span class="sparklow"></span> <span class="sparklow"></span> <span class="sparkmid"></span> <span class="sparkmost"></span> <span class="sparkmost"></span> <span class="sparkmid"></span> <span class="sparklow"></span> <span class="sparklow"></span> <span class="sparkmost"></span> <span class="sparkmid"></span> <span class="sparkmost"></span> <span class="sparkmid"></span> <span class="sparklow"></span> <span class="sparklow"></span> <span class="sparkmid"></span> <span class="sparkmid"></span> <span class="sparkmost"></span> <span class="sparkmid"></span> <span class="sparklow"></span></p>
+
+        <p><h1>Sparkmeters</h1></p>
+
+        <p>Sparkmeters are lightweight, inline graphics that give the relative value of an item. They are inspired by Edward Tufte's <a href="https://en.wikipedia.org/wiki/Sparkline">sparklines</a>. They are designed to be unobtrusive and low information. Unlike sparklines, sparkmeters can't usually stand on their own, but are best used to give the relative value of a group of items (e.g. a list of skills on a resume).</p>
+
+        <p>This version of sparkmeters is implemented with the D3.js library. The source code is found <a href="https://github.com/roycoding/sparkmeters">here</a> and licensed under a BSD-style open source license.</p>
+
+        <p><h2>Examples:</h2></p>
+
+        <p><u>Technical experience</u> <span class="sparkmost"></span> <span class="sparkmid"></span> <span class="sparklow"></span></p>
+
+        <div style="width:65%;">Python&nbsp;<span class="sparkmost"></span>, D3&nbsp;<span class="sparklow"></span>, Linux&nbsp;<span class="sparkmost"></span>, C++&nbsp;<span class="sparkmid"></span>, R&nbsp;<span class="sparklow"></span>, Inkscape&nbsp;<span class="sparkmid"></span>, matplotlib&nbsp;<span class="sparkmost"></span>, pandas&nbsp;<span class="sparklow"></span>, 
+bash&nbsp;<span class="sparkmid"></span>, HTML&nbsp;<span class="sparkmid"></span>, CSS&nbsp;<span class="sparkmid"></span>, LaTeX&nbsp;<span class="sparkmost"></span>, JSON&nbsp;<span class="sparklow"></span>, Numpy&nbsp;<span class="sparkmost"></span>, Scipy&nbsp;<span class="sparkmid"></span>, SQL&nbsp;<span class="sparklow"></span></div>
+
+        <script type="text/javascript" src="sparkmeters.js"></script>
+        
+    </body>
+</html>
