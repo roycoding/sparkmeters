@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sparkmeters with D3 demo</title>
+<!--        <script type="text/javascript" src="../d3/d3.v3.js"></script>-->
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <style type="text/css">
+                body {
+                    //text-align: center; 
+                    color: #555555; 
+                    background-color: white;
+                    font-family: arial, helvetica, sans-serif;
+                    font-size: 30px;
+                    }
+
+                a:link  {color: darkgray; text-decoration: none}
+                a:visited {color: darkgray; text-decoration: none}
+                a:hover {color: silver; text-decoration: underline}
+
+        </style>
+    </head>
+    <body>
+
+    <!--Github ribbon-->
+    <a href="https://github.com/roycoding/sparkmeters"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+    <div id="container" style="width:90%; padding:30px;">
+        <p><span class="sparkmeter" value="0.25"></span> <span class="sparkmeter" value="1.0"></span> <span class="sparkmeter" value="0.5"></span> <span class="sparkmeter" value="1.0"></span> <span class="sparkmeter" value="0.5"></span> <span class="sparkmeter" value="0.25"></span> <span class="sparkmeter" value="0.25"></span> <span class="sparkmeter" value="0.5"></span> <span class="sparkmeter" value="1.0"></span> <span class="sparkmeter" value="1.0"></span> <span class="sparkmeter" value="0.5"></span> <span class="sparkmeter" value="0.25"></span> <span class="sparkmeter" value="0.25"></span> <span class="sparkmeter" value="1.0"></span> <span class="sparkmeter" value="0.5"></span> <span class="sparkmeter" value="1.0"></span> <span class="sparkmeter" value="0.5"></span> <span class="sparkmeter" value="0.25"></span> <span class="sparkmeter" value="0.25"></span> <span class="sparkmeter" value="0.5"></span> <span class="sparkmeter" value="0.5"></span> <span class="sparkmeter" value="1.0"></span> <span class="sparkmeter" value="0.5"></span> <span class="sparkmeter" value="0.25"></span></p>
+
+        <p><h1>Sparkmeters</h1></p>
+
+        <p>Sparkmeters are lightweight, inline graphics that give the relative value of an item. They are inspired by Edward Tufte's <a href="https://en.wikipedia.org/wiki/Sparkline">sparklines</a>. They are designed to be unobtrusive and low information. Unlike sparklines, sparkmeters can't usually stand on their own, but are best used to give the relative value of a group of items (e.g. a list of skills on a resume).</p>
+
+        <p>This version of sparkmeters is implemented with the D3.js library. The source code is found <a href="https://github.com/roycoding/sparkmeters">here</a> and licensed under a BSD-style open source license.</p>
+
+        <p><h2>Examples:</h2></p>
+
+        <p><u>Technical experience</u> <span class="sparkmeter" value="1.0"></span> <span class="sparkmeter" value="0.5"></span> <span class="sparkmeter" value="0.25"></span></p>
+
+        <input type="text" id="meterdata" value='[
+            {"key": "Python", "level" : "most"},
+            {"key": "D3" , "level" : "low"},
+            {"key": "Linux" , "level" : "most"},
+            {"key": "C++" , "level" : "mid"},
+            {"key": "R" , "level" : "low"},
+            {"key": "Inkscape" , "level" : "mid"},
+            {"key": "matplotlib" , "level" : "most"},
+            {"key": "pandas" , "level" : "low"},
+            {"key": "bash" , "level" : "mid"},
+            {"key": "HTML" , "level" : "mid"},
+            {"key": "CSS" , "level" : "mid"},
+            {"key": "LaTeX" , "level" : "most"},
+            {"key": "JSON" , "level" : "low"},
+            {"key": "numpy" , "level" : "most"},
+            {"key": "scipy" , "level" : "mid"},
+            {"key": "SQL" , "level" : "low"}
+            ]' hidden="true">
+
+        <div style="width:65%;">
+            <p class="sparkmetergroup"></p>
+        </div>
+    </div><!--container-->
+
+        <script type="text/javascript" src="sparkmeters.js"></script>
+        
+    </body>
+</html>
