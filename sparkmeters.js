@@ -1,5 +1,4 @@
-
-            //----------------
+           //----------------
             // Todo:
             // * Allow group data to be placed in html document
             // * Parameter passing from html tags (or sandwiched between tags)
@@ -8,32 +7,20 @@
             //Width and height, meter fill and background
             var w = 7;
             var h = w*5;
-            var mfill = "yellowgreen"; //"silver";
+            var mfill = "silver";//"yellowgreen";
             var mback = "whitesmoke";
-            var most = 1.0
-            var mid = 0.5
-            var low = 0.25
+            var most = 1.0;
+            var mid = 0.5;
+            var low = 0.25;
 
             //Data
-//            var dataset = [1,2,3,2,1];
-            var dataset = [
-                    {key: "Python", level : most},
-                    {key: "D3" , level : low},
-                    {key: "Linux" , level : most},
-                    {key: "C++" , level : mid},
-                    {key: "R" , level : low},
-                    {key: "Inkscape" , level : mid},
-                    {key: "matplotlib" , level : most},
-                    {key: "pandas" , level : low},
-                    {key: "bash" , level : mid},
-                    {key: "HTML" , level : mid},
-                    {key: "CSS" , level : mid},
-                    {key: "LaTeX" , level : most},
-                    {key: "JSON" , level : low},
-                    {key: "numpy" , level : most},
-                    {key: "scipy" , level : mid},
-                    {key: "SQL" , level : low}
-                    ];
+            var dataset = JSON.parse(document.getElementById('meterdata').value);
+            // Convert quoted JSON values to numeric values.
+            for (var i = 0; i < dataset.length; i++) {
+                if(dataset[i].level == "low"){dataset[i].level = low;}
+                if(dataset[i].level == "mid"){dataset[i].level = mid;}
+                if(dataset[i].level == "most"){dataset[i].level = most;}
+                }
 
             // Functions to handle grouped item data
             function keyf(d) { return d.key; }
@@ -50,7 +37,7 @@
             // Enter item text and create SVG containers
             var sparkspans = d3.selectAll(".sparkgroup")
                 .data(dataset)
-                .text(function(d,i) {if (i==0) {return d.key+" ";} else {return ", "+d.key+" ";} })
+                .text(function(d,i) {if (i==0) {return d.key+"\u00A0";} else {return ", "+d.key+"\u00A0";} })
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h);
@@ -75,12 +62,15 @@
 
             //-----------------------------------------
             // Single sparkmeters
+            var sfills = document.getElementsByClassName('sparkmeter');
+
             var sparksingle = d3.selectAll(".sparkmeter")
+                .data(sfills)
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h);
 
-            // Draw quarter filled
+            // Draw single meter up to specified fraction
             sparksingle.append("rect")
                 .attr("x", 0)
                 .attr("y", 0)
@@ -90,8 +80,8 @@
 
             sparksingle.append("rect")
                 .attr("x", 0)
-                .attr("y", h-h/4)
-                .attr("height", h/4)
+                .attr("y", function(d) { return h - h*parseFloat(d.attributes[0].value); })
+                .attr("height", function(d) { return h*parseFloat(d.attributes[0].value); })
                 .attr("width", w)
                 .attr("fill", mfill);
            
