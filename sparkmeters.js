@@ -79,8 +79,8 @@
 
             sparksingle.append("rect")
                 .attr("x", 0)
-                .attr("y", function(d) { return h - h*parseFloat(d.attributes[0].value); })
-                .attr("height", function(d) { return h*parseFloat(d.attributes[0].value); })
+                .attr("y", function(d) { return h - h*parseFloat(d.attributes.getNamedItem("value").value); })
+                .attr("height", function(d) { return h*parseFloat(d.attributes.getNamedItem("value").value); })
                 .attr("width", w)
                 .attr("fill", mfill);
            
