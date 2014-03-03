@@ -1,7 +1,6 @@
            //----------------
             // Todo:
-            // * Allow group data to be placed in html document
-            // * Parameter passing from html tags (or sandwiched between tags)
+            // * 
             //-----------------------
 
             //Width and height, meter fill and background
